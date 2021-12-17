@@ -102,16 +102,7 @@ struct AddView: View {
         }
         return true
     }
-    
-//    func pagesCountIsAppropriate() -> Bool {
-//        if pagesCountText.count < 2 {
-//            alertTitle = "Your book pages count is too short. Please input correct pages count!"
-//            showAlert.toggle()
-//            return false
-//        }
-//        return true
-//    }
-    
+        
     func descriptionTextIsApproprate() -> Bool {
         if descriptionText.count < 3 {
             alertTitle = "Your description is too short. Please input correct description!"
