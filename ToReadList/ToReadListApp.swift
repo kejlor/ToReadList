@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct ToReadListApp: App {
+    
+    @StateObject var bookViewModel = BookViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView {
+                BooksListView()
+            }
+            .environmentObject(bookViewModel)
         }
     }
 }
