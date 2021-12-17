@@ -21,13 +21,27 @@ struct AddView: View {
     @State var showAlert = false
         
     var body: some View {
-        ScrollView {
+        NavigationView {
             VStack {
-                TextField("Type book title here...", text: $titleText)
-                TextField("Type book author here...", text: $authorText)
-                TextField("Type book pages count here...", value: $pagesCountText, formatter: NumberFormatter())
-                    .keyboardType(.numberPad)
-                TextField("Type book description here...", text: $descriptionText)
+                HStack {
+                    Text("Title: ")
+                    TextField("Type book title here...", text: $titleText)
+                }
+                HStack {
+                    Text("Author")
+                    TextField("Type book author here...", text: $authorText)
+                }
+                HStack {
+                    Text("Pages count: ")
+                    TextField("Type book pages count here...", value: $pagesCountText, formatter: NumberFormatter())
+                        .keyboardType(.numberPad)
+                        .foregroundColor(.secondary)
+                }
+                HStack {
+                    Text("Description:")
+                    TextField("Type book description here...", text: $descriptionText)
+                }
+                
                 Text("Have you finished that book or you're going to read it?")
                 Picker("Have you finished that book or you're going to read it?", selection: $isFinished) {
                     Text("Planning to read it.").tag(false)
@@ -35,23 +49,40 @@ struct AddView: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 
+                Spacer()
+                
                 Button {
                     saveButtonIsPressed()
                 } label: {
-                    Text("Add book")
+                    Text("Add book".uppercased())
+                        .foregroundColor(.white)
+                        .font(.headline)
+                        .frame(height: 55)
+                        .frame(maxWidth: .infinity)
+                        .background(
+                            LinearGradient(
+                                gradient: fieldsAreCorrect() ? Gradient(colors: [Color("Clover"), Color("Spring")]) : Gradient(colors: [Color("Cayenne"), Color("Maraschino")]),
+                                startPoint: .bottomLeading,
+                                endPoint: .bottom))
+                        .cornerRadius(30)
                 }
 
             }
+            .padding()
         }
         .navigationTitle("Add a book 📖")
         .alert(isPresented: $showAlert, content: getAlert)
     }
     
     func saveButtonIsPressed() {
-        if titleTextIsApproprate() && authorTextIsAppropriate() && descriptionTextIsApproprate() {
+        if fieldsAreCorrect() {
             bookViewModel.addBook(title: titleText, author: authorText, pagesCount: pagesCountText, description: descriptionText, isFinished: isFinished)
             presentationMode.wrappedValue.dismiss()
         }
+    }
+    
+    func fieldsAreCorrect() -> Bool {
+        titleTextIsApproprate() && authorTextIsAppropriate() && descriptionTextIsApproprate()
     }
     
     func titleTextIsApproprate() -> Bool {
