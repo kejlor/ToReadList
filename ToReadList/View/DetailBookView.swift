@@ -13,13 +13,36 @@ struct DetailBookView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Title: \(book.title)")
-            Text("Author: \(book.author)")
-            Text("Pages: \(book.pagesCount)")
-            Text("Current reader status: \(book.isFinished ? "Finished" : "Still reading")")
-            Text("Description:")
+            Spacer()
+            HStack {
+                Image(systemName: "doc.fill")
+                Text("Title: \(book.title)")
+            }
+            HStack {
+                Image(systemName: "person.fill")
+                Text("Author: \(book.author)")
+            }
+            HStack {
+                Image(systemName: "book.circle.fill")
+                Text("Pages: \(book.pagesCount)")
+            }
+            HStack {
+                Image(systemName: "checkmark.circle.fill")
+                    .foregroundColor(book.isFinished ? .green : .red)
+                Text("Current status: \(book.isFinished ? "Finished" : "Still reading")")
+            }
+            HStack {
+                Image(systemName: "square.and.pencil")
+                Text("Description:")
+            }
+            
             Text(book.description)
+                .padding()
+            
+            Spacer()
+            Spacer()
         }
+        .padding()
         .navigationBarItems(trailing: EditButton())
     }
 }
