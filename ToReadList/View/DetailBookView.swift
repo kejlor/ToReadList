@@ -44,9 +44,12 @@ struct DetailBookView: View {
                     Image(systemName: "square.and.pencil")
                     Text("Description:")
                 }
+                ScrollView {
+                    Text(book.description)
+                        .padding()
+                        .fixedSize(horizontal: false, vertical: true)
+                }
                 
-                Text(book.description)
-                    .padding()
                 
                 Spacer()
                 Spacer()
@@ -66,6 +69,6 @@ struct DetailBookView: View {
 
 struct DetailBookView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailBookView(book: BookModel(title: "Poppy wars", author: "Liang", pagesCount: 650, description: "Young girl is trying to leave her shitty hometown.", isFinished: false))
+        DetailBookView(book: BookModel(title: "Poppy wars", author: "Liang", pagesCount: 650, description: "Young girl is trying to leave her shitty hometown. Young girl is trying to leave her shitty hometown. Young girl is trying to leave her shitty hometown. Young girl is trying to leave her shitty hometown. Young girl is trying to leave her shitty hometown. Young girl is trying to leave her shitty hometown. Young girl is trying to leave her shitty hometown. Young girl is trying to leave her shitty hometown. Young girl is trying to leave her shitty hometown. Young girl is trying to leave her shitty hometown. Young girl is trying to leave her shitty hometown. Young girl is trying to leave her shitty hometown. Young girl is trying to leave her shitty hometown.", isFinished: false))
     }
 }

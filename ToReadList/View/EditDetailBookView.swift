@@ -56,8 +56,17 @@ struct EditDetailBookView: View {
                 Text("Description:")
             }
             
-            TextField(book.description, text: $descriptionText)
-                .padding()
+            ScrollView {
+                TextField(book.description, text: $descriptionText)
+                    .multilineTextAlignment(.leading)
+                    .padding()
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            
+            TextEditor(text: $descriptionText)
+                .foregroundColor(.secondary)
+                .padding(.horizontal)
+                .navigationTitle("tttttt")
             
             Button {
                 updateButtonIsPressed()
@@ -76,10 +85,14 @@ struct EditDetailBookView: View {
             }
             
             Spacer()
-            Spacer()
         }
         .padding()
     }
+    
+    func getBookDescription() {
+        descriptionText = book.description
+    }
+    
     func getBookPageCount() {
         pagesCountText = book.pagesCount
     }
@@ -92,6 +105,6 @@ struct EditDetailBookView: View {
 
 struct EditDetailBookView_Previews: PreviewProvider {
     static var previews: some View {
-        EditDetailBookView(book: BookModel(title: "Poppy wars", author: "Liang", pagesCount: 650, description: "Young girl is trying to leave her shitty hometown.", isFinished: false), isEditing: .constant(true))
+        EditDetailBookView(book: BookModel(title: "Poppy wars", author: "Liang", pagesCount: 650, description: "Young girl is trying to leave her shitty hometown. Young girl is trying to leave her shitty hometown. Young girl is trying to leave her shitty hometown. Young girl is trying to leave her shitty hometown. Young girl is trying to leave her shitty hometown. Young girl is trying to leave her shitty hometown. Young girl is trying to leave her shitty hometown. Young girl is trying to leave her shitty hometown. Young girl is trying to leave her shitty hometown. Young girl is trying to leave her shitty hometown. Young girl is trying to leave her shitty hometown. Young girl is trying to leave her shitty hometown. Young girl is trying to leave her shitty hometown. Young girl is trying to leave her shitty hometown. ", isFinished: false), isEditing: .constant(true))
     }
 }
