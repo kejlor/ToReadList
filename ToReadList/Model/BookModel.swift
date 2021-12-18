@@ -27,4 +27,9 @@ struct BookModel: Identifiable, Codable {
     func updateStatus() -> BookModel {
         return BookModel(id: id, title: title, author: author, pagesCount: pagesCount, description: description, isFinished: !isFinished)
     }
+    
+    func updateBook(title: String, author: String, pagesCount: Int, desription: String, isFinished: Bool) -> BookModel {
+        return BookModel(id: id, title: title, author: author, pagesCount:
+                            pagesCount, description: desription, isFinished: isFinished)
+    }
 }

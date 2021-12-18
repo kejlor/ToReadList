@@ -10,40 +10,57 @@ import SwiftUI
 struct DetailBookView: View {
     
     let book: BookModel
+    @EnvironmentObject var bookViewModel: BookViewModel
+    
+    @State private var isEditing = false
+    @State private var titleText = ""
+    @State private var authorText = ""
+    @State private var pagesCountText = 0
+    @State private var descriptionText = ""
+    @State private var isFinished = false
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Spacer()
-            HStack {
-                Image(systemName: "doc.fill")
-                Text("Title: \(book.title)")
+        NavigationView {
+            VStack(alignment: .leading) {
+                Spacer()
+                HStack {
+                    Image(systemName: "doc.fill")
+                    Text("Title: \(book.title)")
+                }
+                HStack {
+                    Image(systemName: "person.fill")
+                    Text("Author: \(book.author)")
+                }
+                HStack {
+                    Image(systemName: "book.circle.fill")
+                    Text("Pages: \(book.pagesCount)")
+                }
+                HStack {
+                    Image(systemName: "checkmark.circle.fill")
+                        .foregroundColor(book.isFinished ? .green : .red)
+                    Text("Current status: \(book.isFinished ? "Finished" : "Still reading")")
+                }
+                HStack {
+                    Image(systemName: "square.and.pencil")
+                    Text("Description:")
+                }
+                
+                Text(book.description)
+                    .padding()
+                
+                Spacer()
+                Spacer()
             }
-            HStack {
-                Image(systemName: "person.fill")
-                Text("Author: \(book.author)")
-            }
-            HStack {
-                Image(systemName: "book.circle.fill")
-                Text("Pages: \(book.pagesCount)")
-            }
-            HStack {
-                Image(systemName: "checkmark.circle.fill")
-                    .foregroundColor(book.isFinished ? .green : .red)
-                Text("Current status: \(book.isFinished ? "Finished" : "Still reading")")
-            }
-            HStack {
-                Image(systemName: "square.and.pencil")
-                Text("Description:")
-            }
-            
-            Text(book.description)
-                .padding()
-            
-            Spacer()
-            Spacer()
+            .padding()
         }
-        .padding()
-        .navigationBarItems(trailing: EditButton())
+        .navigationBarItems(trailing: Button(action: {
+            isEditing.toggle()
+        }, label: {
+            Text("Edit".uppercased())
+        }))
+        .sheet(isPresented: $isEditing) {
+            EditDetailBookView(book: book, isEditing: $isEditing)
+        }
     }
 }
 

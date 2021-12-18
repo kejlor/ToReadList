@@ -54,4 +54,10 @@ class BookViewModel: ObservableObject {
             UserDefaults.standard.set(encodedData, forKey: booksKey)
         }
     }
+    
+    func updateBookModel(bookModel: BookModel, title: String, author: String, pagesCount: Int, description: String, isFinished: Bool) {
+        if let index = books.firstIndex(where: { $0.id == bookModel.id }) {
+            books[index] = bookModel.updateBook(title: title, author: author, pagesCount: pagesCount, desription: description, isFinished: isFinished)
+        }
+    }
 }

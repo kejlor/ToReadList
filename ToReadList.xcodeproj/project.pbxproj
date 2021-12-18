@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E98479A2276E442000B3044B /* EditDetailBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98479A1276E442000B3044B /* EditDetailBookView.swift */; };
 		E9F87791276BCBD200BC21DE /* ToReadListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F87790276BCBD200BC21DE /* ToReadListApp.swift */; };
 		E9F87795276BCBD300BC21DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9F87794276BCBD300BC21DE /* Assets.xcassets */; };
 		E9F87798276BCBD300BC21DE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9F87797276BCBD300BC21DE /* Preview Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E98479A1276E442000B3044B /* EditDetailBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDetailBookView.swift; sourceTree = "<group>"; };
 		E9F8778D276BCBD200BC21DE /* ToReadList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToReadList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9F87790276BCBD200BC21DE /* ToReadListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToReadListApp.swift; sourceTree = "<group>"; };
 		E9F87794276BCBD300BC21DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				E9F877B5276C0C0400BC21DE /* AddView.swift */,
 				E9F877B7276C0C1400BC21DE /* BookRowView.swift */,
 				E9F877B9276C0C2200BC21DE /* DetailBookView.swift */,
+				E98479A1276E442000B3044B /* EditDetailBookView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 			files = (
 				E9F877A6276BF00000BC21DE /* BookModel.swift in Sources */,
 				E9F877A8276BF0A900BC21DE /* BookViewModel.swift in Sources */,
+				E98479A2276E442000B3044B /* EditDetailBookView.swift in Sources */,
 				E9F877B6276C0C0400BC21DE /* AddView.swift in Sources */,
 				E9F877B8276C0C1400BC21DE /* BookRowView.swift in Sources */,
 				E9F87791276BCBD200BC21DE /* ToReadListApp.swift in Sources */,
